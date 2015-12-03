@@ -15,6 +15,8 @@ var serveStatic = require('serve-static');
 function PushStateAssetServer(options) {
   _.defaults(options, PushStateAssetServer.defaults);
 
+  options.index = path.join(options.root, options.index);
+
   var _connect = connect();
 
   _.each(makeMiddleware(options), function (middleware) {
@@ -51,10 +53,11 @@ function PushStateAssetServer(options) {
 }
 
 PushStateAssetServer.defaults = {
-  port: '9000',
+  port: 9000,
   root: path.dirname(module.parent.id),
   index: 'index.html',
   host: "localhost",
+  livereload: false,
   debug: false
 };
 
@@ -133,7 +136,7 @@ function startLiveReload(assetServer) {
   tinyLr.Server.prototype.error = function () {
   };
 
-  if (assetServer.options.https != null) {
+  if (assetServer.options.https && typeof assetServer.options.https === 'object') {
     lr = tinyLr({
       key: assetServer.options.https.key || fs.readFileSync(__dirname + '/certs/server.key'),
       cert: assetServer.options.https.cert || fs.readFileSync(__dirname + '/certs/server.crt')
