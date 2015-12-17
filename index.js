@@ -46,6 +46,9 @@ function PushStateAssetServer(options) {
     },
     server: {
       value: server
+    },
+    options: {
+      value: options
     }
   };
 

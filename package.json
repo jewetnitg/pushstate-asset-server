@@ -1,6 +1,6 @@
 {
   "name": "pushstate-asset-server",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "An asset server that returns an index file for all unresolved routes",
   "main": "index.js",
   "scripts": {
