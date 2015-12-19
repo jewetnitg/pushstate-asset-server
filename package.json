@@ -1,6 +1,6 @@
 {
   "name": "pushstate-asset-server",
-  "version": "0.0.3",
+  "version": "0.0.7",
   "description": "An asset server that returns an index file for all unresolved routes",
   "main": "index.js",
   "scripts": {
@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "compression": "^1.6.0",
     "connect": "^3.4.0",
     "connect-livereload": "^0.5.4",
     "event-stream": "^3.3.2",

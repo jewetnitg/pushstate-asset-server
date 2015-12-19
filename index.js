@@ -1,6 +1,7 @@
 /**
  * @author rik
  */
+var compression = require('compression');
 var _ = require('lodash');
 var path = require('path');
 var http = require('http');
@@ -18,7 +19,7 @@ function PushStateAssetServer(options) {
   options.index = path.join(options.root, options.index);
 
   var _connect = connect();
-
+  _connect.use(compression());
   _.each(makeMiddleware(options), function (middleware) {
     _connect.use(middleware);
   });
@@ -61,6 +62,7 @@ PushStateAssetServer.defaults = {
   index: 'index.html',
   host: "localhost",
   livereload: false,
+
   debug: false
 };
 
